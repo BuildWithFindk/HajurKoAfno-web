@@ -1,20 +1,23 @@
-Step 1:  cat composer.json | grep -A 10 "extra"                                                                            
-    "extra": {
-        "laravel": {
-            "dont-discover": []
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true,
+composer dump-autoload                                               ─╯
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+
+   INFO  Discovering packages.  
+
+  laravel/pail ..................................................... DONE
+  laravel/pao ...................................................... DONE
+  laravel/tinker ................................................... DONE
+  nesbot/carbon .................................................... DONE
+  nunomaduro/collision ............................................. DONE
+  nunomaduro/termwind .............................................. DONE
+  nwidart/laravel-modules .......................................... DONE
+
+Generated optimized autoload files containing 6991 classes
 
 
-Step 2:  grep -A 3 "Modules" vendor/composer/autoload_psr4.php                                                             
-    'Nwidart\\Modules\\' => array($vendorDir . '/nwidart/laravel-modules/src'),
-    'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
-    'Nette\\' => array($vendorDir . '/nette/schema/src', $vendorDir . '/nette/utils/src'),
-    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
 
+
+
+ php -r "require 'vendor/autoload.php'; var_dump(class_exists('Modules\\Blog\\Providers\\BlogServiceProvider'));"
+bool(true)
